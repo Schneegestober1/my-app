@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Sidebar from "./components/Sidebar/SIdebar";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 
 export default function Home() {
