@@ -2,7 +2,6 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Sidebar from "./components/Sidebar/Sidebar";
 
-
 export default function Home() {
   return (
     <div className="wrapper">
@@ -719,6 +718,5 @@ export default function Home() {
         <footer className="footer" />
       </div>
     </div>
-
   );
 }
