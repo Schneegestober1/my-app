@@ -1,4 +1,4 @@
-import { PlaylistItem } from "@/app/PlaylistItem/PlaylistItem";
+import { PlaylistItem } from "@/app/components/PlaylistItem/PlaylistItem";
 import { Filter } from "../Filter/Filter";
 import PlaylistTitle from "../PlaylistTitle/PlaylistTitle";
 import Searchbar from "../Searchbar/Searchbar";
