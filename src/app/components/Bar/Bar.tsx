@@ -1,6 +1,6 @@
 export const Bar = () => {
     return (
-        <div className="bar">
+      <div className="bar">
         <div className="bar__content">
           <div className="bar__player-progress" />
           <div className="bar__player-block">
@@ -85,3 +85,5 @@ export const Bar = () => {
       </div>
     )
 }
+
+export default Bar;
