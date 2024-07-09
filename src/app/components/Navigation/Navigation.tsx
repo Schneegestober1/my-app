@@ -1,17 +1,18 @@
 import Image from "next/image";
+import styles from "./Navigation.module.css";
 
 export const Navigation =() => {
     return (
-    <nav className="main__nav nav">
-      <div className="nav__logo logo">
-        <Image className="logo__image" src="/img/logo.png" alt="Skypro-logo" width={114} height={17}/>
+    <nav className={styles.mainNav}>
+      <div className={styles.navLogo}>
+        <Image className={styles.logoImage} src="/img/logo.png" alt="Skypro-logo" width={114} height={17}/>
       </div>
-      <div className="nav__burger burger">
-        <span className="burger__line" />
-        <span className="burger__line" />
-        <span className="burger__line" />
+      <div className={styles.navBurger}>
+        <span className={styles.burgerLine} />
+        <span className={styles.burgerLine} />
+        <span className={styles.burgerLine} />
       </div>
-      <div className="nav__menu menu">
+      <div className={styles.navMenu}>
         <ul className="menu__list">
           <li className="menu__item">
             <a href="#" className="menu__link">
