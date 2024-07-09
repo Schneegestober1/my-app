@@ -10,6 +10,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: end;
+    cursor: pointer;
 }
 
 .volumeImage {
@@ -30,5 +31,6 @@
   
 .volumeProgressLine {
     width: 109px;
+    cursor: pointer;
 }
   

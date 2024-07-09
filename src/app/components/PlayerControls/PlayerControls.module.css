@@ -1,7 +1,7 @@
 .playerControls {
-    display: flex;
-    flex-direction: row;
-    padding: 0 27px 0 31px;
+  display: flex;
+  flex-direction: row;
+  padding: 0 27px 0 31px;
 }
 
 .playerBtnPrev {
@@ -14,6 +14,7 @@
 .playerBtnPrevSvg {
   width: 15px;
   height: 14px;
+  cursor: pointer;
 }
 
 .playerBtnPlay {
@@ -27,6 +28,7 @@
   width: 22px;
   height: 20px;
   fill: #d9d9d9;
+  cursor: pointer;
 }
 
 .playerBtnNext {
@@ -42,6 +44,7 @@
   height: 14px;
   fill: inherit;
   stroke: #d9d9d9;
+  cursor: pointer;
 }
 
 .playerBtnRepeat {
@@ -52,19 +55,19 @@
 }
 
 .playerBtnRepeat:hover svg {
-    fill: transparent;
-    stroke: #acacac;
-    cursor: pointer;
+  fill: transparent;
+  stroke: #acacac;
+  cursor: pointer;
 }
 .playerBtnRepeat:active svg {
-    fill: transparent;
-    stroke: #ffffff;
-    cursor: pointer;
+  fill: transparent;
+  stroke: #ffffff;
+  cursor: pointer;
 }
 .playerBtnRepeat:active {
-    fill: #696969;
-    stroke: #ffffff;
-    cursor: pointer;
+  fill: #696969;
+  stroke: #ffffff;
+  cursor: pointer;
 }
 
 .playerBtnRepeatSvg {
@@ -83,19 +86,19 @@
 }
 
 .playerBtnShuffle:hover svg {
-    fill: transparent;
-    stroke: #acacac;
-    cursor: pointer;
+  fill: transparent;
+  stroke: #acacac;
+  cursor: pointer;
 }
 .playerBtnShuffle:active svg {
-    fill: transparent;
-    stroke: #ffffff;
-    cursor: pointer;
+  fill: transparent;
+  stroke: #ffffff;
+  cursor: pointer;
 }
 .playerBtnShuffle:active {
-    fill: #696969;
-    stroke: #ffffff;
-    cursor: pointer;
+  fill: #696969;
+  stroke: #ffffff;
+  cursor: pointer;
 }
 
 .playerBtnShuffleSvg {

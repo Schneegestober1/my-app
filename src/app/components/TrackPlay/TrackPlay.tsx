@@ -1,31 +1,33 @@
+import styles from "./TrackPlay.module.css";
+
 export const TrackPlay = () => {
   return (
-    <div className="player__track-play track-play">
-      <div className="track-play__contain">
-        <div className="track-play__image">
-          <svg className="track-play__svg">
+    <div className={styles.playerTrackPlay}>
+      <div className={styles.trackPlayContain}>
+        <div className={styles.trackPlayImage}>
+          <svg className={styles.trackPlaySvg}>
             <use xlinkHref="img/icon/sprite.svg#icon-note" />
           </svg>
         </div>
-        <div className="track-play__author">
-          <a className="track-play__author-link" href="http://">
-            Ты та...
+        <div className={styles.trackPlayAuthor}>
+          <a className={styles.trackPlayAuthorLink} href="http://">
+            Wonderful Life
           </a>
         </div>
-        <div className="track-play__album">
-          <a className="track-play__album-link" href="http://">
-            Баста
+        <div className={styles.trackPlayAlbum}>
+          <a className={styles.trackPlayAlbumLink} href="http://">
+            Hurts
           </a>
         </div>
       </div>
-      <div className="track-play__like-dis">
-        <div className="track-play__like _btn-icon">
-          <svg className="track-play__like-svg">
+      <div className={styles.trackPlayLikeDis}>
+        <div className={styles.trackPlayLike}>
+          <svg className={styles.trackPlayLikeSvg}>
             <use xlinkHref="img/icon/sprite.svg#icon-like" />
           </svg>
         </div>
-        <div className="track-play__dislike _btn-icon">
-          <svg className="track-play__dislike-svg">
+        <div className={styles.trackPlayDislike}>
+          <svg className={styles.trackPlayDislikeSvg}>
             <use xlinkHref="img/icon/sprite.svg#icon-dislike" />
           </svg>
         </div>
