@@ -6,6 +6,7 @@ type TrackProps = {
 }
 
 export const PlaylistItem = ({track}: TrackProps) => {
+    const {name, author} = track;
     return (
         <div className={styles.playlistItem}>
             <div className={styles.playlistTrack}>
@@ -17,13 +18,13 @@ export const PlaylistItem = ({track}: TrackProps) => {
                     </div>
                     <div className={styles.trackTitleText}>
                         <span className={styles.trackTitleLink}>
-                        Guilt <span className={styles.trackTitleSpan} />
+                        {name} <span className={styles.trackTitleSpan} />
                         </span>
                     </div>
                 </div>
                 <div className={styles.trackAuthor}>
                     <span className={styles.trackAuthorLink}>
-                        Nero
+                        {author}
                     </span>
                 </div>
                 <div className={styles.trackAlbum}>
