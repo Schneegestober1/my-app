@@ -1,12 +1,15 @@
 import { TrackType } from "@/types/trackstypes";
 import styles from "./PlaylistItem.module.css";
+import { convertSecondsToMinutes } from "@/utils/helpers";
 
 type TrackProps = {
     track: TrackType
 }
 
 export const PlaylistItem = ({track}: TrackProps) => {
-    const {name, author} = track;
+    const {name, author, album, duration_in_seconds} = track;
+    const time = convertSecondsToMinutes(duration_in_seconds);
+
     return (
         <div className={styles.playlistItem}>
             <div className={styles.playlistTrack}>
@@ -29,14 +32,14 @@ export const PlaylistItem = ({track}: TrackProps) => {
                 </div>
                 <div className={styles.trackAlbum}>
                     <span className={styles.trackAlbumLink}>
-                        Welcome Reality
+                        {album}
                     </span>
                 </div>
                 <div className={styles.trackTime}>
                     <svg className={styles.trackTimeSvg}>
                         <use xlinkHref="img/icon/sprite.svg#icon-like" />
                     </svg>
-                    <span className={styles.trackTimeText}>4:44</span>
+                    <span className={styles.trackTimeText}>{time}</span>
                 </div>
             </div>
         </div>
