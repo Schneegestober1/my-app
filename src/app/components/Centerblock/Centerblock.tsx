@@ -19,7 +19,7 @@ export async function Centerblock () {
     <div className={styles.mainCenterblock}>
         <Searchbar/>
         <h2 className={styles.centerblockH2}>Треки</h2>
-        <Filter/>
+        <Filter tracks={tracks}/>
         <div className={styles.centerblockContent}>
             <PlaylistTitle/>
             <div className={styles.contentPlaylist}>
