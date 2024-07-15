@@ -13,7 +13,7 @@ export function FilterItem({
     title,
     isActive,
     handleFilter,
-    list,
+    list, 
 } : FilterItemProps) {
     const [counter, setCounter] = useState<number>(0);
     const [isOpen, setIsOpen] = useState<boolean>(false);
