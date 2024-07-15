@@ -21,6 +21,11 @@
 .contentPlaylist {
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    overflow: auto;
+    height: 900px;
+    scrollbar-width: none;
 }
 
+.contentPlaylist::-webkit-scrollbar {
+    display: none; /* Chrome, Safari и Opera */
+}
