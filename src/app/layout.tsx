@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <head>
-        <link rel="shortcut icon" href="src/app/spotify_icon-icons.com_65503.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </head>
       <body className={montserrat.className}>{children}</body>
     </html>
