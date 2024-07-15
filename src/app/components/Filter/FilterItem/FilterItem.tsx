@@ -19,7 +19,7 @@ export function FilterItem({
     const [isOpen, setIsOpen] = useState<boolean>(false);
     return (
         <div className={styles.filterWrapper}>
-            <div onClick={() => {handleFilter(title), setIsOpen(false), setCounter(0)}} className={styles.filterButton}>{title}</div>
+            <div onClick={() => {handleFilter(title), setIsOpen(false), setCounter(0)}} className={isActive ? styles.filterButtonActive : styles.filterButton}>{title}</div>
             {isOpen && (
                 <div className={styles.svgBlock}>
                 <div className={styles.svg}>

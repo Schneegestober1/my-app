@@ -8,15 +8,26 @@
     padding: 6px 20px;
 }
 
+.filterButtonActive {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    border: 1px solid #B672FF;
+    border-radius: 60px;
+    padding: 6px 20px;
+    color: #B672FF;
+}
+
 .filterButton:hover {
-    border-color: #d9b6ff;
-    color: #d9b6ff;
+    border-color: #B672FF;
+    color: #B672FF;
     cursor: pointer;
 }
 
 .filterButton:active {
-    border-color: #ad61ff;
-    color: #ad61ff;
+    border-color: #B672FF;
+    color: #B672FF;
     cursor: pointer;
 }
 .filterContainer {
@@ -48,14 +59,14 @@
     text-align: left;
 }
 
-.filterListActive {
+/* .filterListActive {
     height: 24px;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     text-align: left;
     color: #ad61ff;
-}
+} */
 
 .filterList:hover {
     color: #d9b6ff;
