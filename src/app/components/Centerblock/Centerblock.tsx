@@ -26,7 +26,6 @@ export async function Centerblock () {
                 {tracks.map((track) => <PlaylistItem key={track.id} track={track}/>) }
             </div>
             {error && error}
-            {/* Будет ли это работать? */}
         </div>
     </div>
 )}
