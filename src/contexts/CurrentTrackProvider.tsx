@@ -8,7 +8,7 @@ type CurrentTrackContextValue = {
     setCurrentTrack: Dispatch<SetStateAction <TrackType | null>>
 }
 
-const CurrentTrackContext = createContext<CurrentTrackContextValue | null>(null)
+const CurrentTrackContext = createContext<CurrentTrackContextValue | undefined>(undefined)
 
 type CurrentTrackProviderProps = {
     children: ReactNode,
@@ -20,5 +20,9 @@ export function CurrentTrackProvider({children}: CurrentTrackProviderProps) {
 } 
 
 export function useCurrentTrack(){
-    return useContext(CurrentTrackContext)
+    const context = useContext(CurrentTrackContext)
+    if (context === undefined) {
+        throw new Error('useCurrentTrack должон использоваться вунтри провайдера')
+    }
+    return context;
 }

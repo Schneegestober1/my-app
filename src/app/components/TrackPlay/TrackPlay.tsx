@@ -1,8 +1,11 @@
 import styles from "./TrackPlay.module.css";
 
-// 29:51
+type TrackPlayProps = {
+  name:string,
+  author: string,
+}
 
-export const TrackPlay = () => {
+export const TrackPlay = ({name, author}: TrackPlayProps) => {
   return (
     <div className={styles.playerTrackPlay}>
       <div className={styles.trackPlayContain}>
@@ -13,12 +16,12 @@ export const TrackPlay = () => {
         </div>
         <div className={styles.trackPlayAuthor}>
           <a className={styles.trackPlayAuthorLink} href="http://">
-            Wonderful Life
+            {name}
           </a>
         </div>
         <div className={styles.trackPlayAlbum}>
           <a className={styles.trackPlayAlbumLink} href="http://">
-            Hurts
+            {author}
           </a>
         </div>
       </div>
