@@ -1,3 +1,5 @@
+'use client'
+
 import { TrackType } from "@/types/trackstypes";
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from "react";
 
