@@ -23,10 +23,13 @@ export async function Centerblock () {
         <Filter tracks={tracks}/>
         <div className={styles.centerblockContent}>
             <PlaylistTitle/>
-            {error && <div className={styles.error}>{error}</div>}
+            {error 
+            ? 
+            <div className={styles.error}>{error}</div> 
+            :
             <div className={styles.contentPlaylist}>
-                {tracks.map((track) => <PlaylistItem key={track.id} track={track}/>) }
-            </div>
+            {tracks.map((track) => <PlaylistItem key={track.id} track={track}/>) }
+            </div>}
         </div>
     </div>
 )}
