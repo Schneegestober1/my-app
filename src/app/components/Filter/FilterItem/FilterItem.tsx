@@ -48,7 +48,7 @@ export function FilterItem({
                     ))}
                 </ul>
                 </div>
-                )}
+            )}
         </div>
     )
 }
