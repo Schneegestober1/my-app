@@ -8,9 +8,9 @@ type TrackProps = {
 }
 
 export const PlaylistItem = ({track}: TrackProps) => {
+    const {setCurrentTrack} = useCurrentTrack()
     const {name, author, album, duration_in_seconds} = track;
     const time = convertSecondsToMinutes(duration_in_seconds);
-    const {setCurrentTrack} = useCurrentTrack()
 
     const handleTrackClick = () => {
       setCurrentTrack(track)
