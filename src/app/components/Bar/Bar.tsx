@@ -6,8 +6,14 @@ import { TrackPlay } from "../TrackPlay/TrackPlay";
 import { Volume } from "../Volume/Volume";
 import styles from "./Bar.module.css";
 
+// 44:52
+
 export const Bar = () => {
   const {currentTrack} = useCurrentTrack()
+  if (!currentTrack) {
+    return null
+  }
+  const {name, author} = currentTrack
   return (
     <div className={styles.bar}>
       <div className={styles.barContent}>
@@ -15,7 +21,7 @@ export const Bar = () => {
         <div className={styles.barPlayerBlock}>
           <div className={styles.barPlayer}>
             <PlayerControls/>
-            <TrackPlay/>
+            <TrackPlay name={name} author={author}/>
           </div>
           <Volume/>
         </div>
