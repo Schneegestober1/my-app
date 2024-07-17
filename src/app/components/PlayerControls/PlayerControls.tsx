@@ -1,6 +1,13 @@
 import styles from "./PlayerControls.module.css";
 
-export const PlayerControls = () => {
+type PlayerControlsProps = {
+    togglePlay:() => void;
+    isPlaying: boolean;
+    handleLoop:() => void;
+    isLoop: boolean;
+}
+
+export const PlayerControls = ({togglePlay, isPlaying, handleLoop, isLoop}: PlayerControlsProps) => {
     return (
      <div className={styles.playerControls}>
             <div className={styles.playerBtnPrev}>
