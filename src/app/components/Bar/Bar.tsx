@@ -60,7 +60,7 @@ export const Bar = () => {
             <PlayerControls togglePlay={togglePlay} isPlaying={isPlaying} handleLoop={handleLoop} isLoop={isLoop}/>
             <TrackPlay name={name} author={author}/>
           </div>
-          <Volume/>
+          <Volume audio={audioRef.current}/>
         </div>
       </div>
     </div>
