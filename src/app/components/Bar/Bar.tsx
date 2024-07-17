@@ -12,7 +12,7 @@ export const Bar = () => {
   const {currentTrack} = useCurrentTrack();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [currentTime, setCurrentTime] = useState<number>(0)
+  const [currentTime, setCurrentTime] = useState<number>(0);
 
   const togglePlay = () => {
     const audio = audioRef.current
@@ -39,11 +39,11 @@ export const Bar = () => {
   return (
     <div className={styles.bar}>
       <div className={styles.barContent}>
-      <audio className={styles.audio} ref={audioRef} controls src={track_file} />
+      <audio className={styles.audio} ref={audioRef} controls src={track_file} onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)} />
         <ProgressBar max={duration} value={currentTime} step={0.01} onChange={handleSeek}/>
         <div className={styles.barPlayerBlock}>
           <div className={styles.barPlayer}>
-            <PlayerControls/>
+            <PlayerControls />
             <TrackPlay name={name} author={author}/>
           </div>
           <Volume/>
