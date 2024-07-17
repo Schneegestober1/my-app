@@ -77,6 +77,19 @@
   stroke: #696969;
 }
 
+.playerBtnRepeatSvgActive {
+  width: 18px;
+  height: 12px;
+  fill: transparent;
+  stroke: #fff;
+}
+/* .playerBtnRepeatSvg {
+  width: 18px;
+  height: 12px;
+  fill: transparent;
+  stroke: #696969;
+} */
+
 .playerBtnShuffle {
   display: flex;
   align-items: center;

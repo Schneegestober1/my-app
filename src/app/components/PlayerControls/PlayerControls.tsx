@@ -15,18 +15,25 @@ export const PlayerControls = ({togglePlay, isPlaying, handleLoop, isLoop}: Play
                     <use xlinkHref="img/icon/sprite.svg#icon-prev" />
                 </svg>
             </div>
-            <div className={styles.playerBtnPlay}>
-                <svg className={styles.playerBtnPlaySvg}>
-                    <use xlinkHref="img/icon/sprite.svg#icon-play" />
-                </svg>
+            <div onClick={togglePlay} className={styles.playerBtnPlay}>
+                {isPlaying 
+                    ? 
+                    <svg className={styles.playerBtnPlaySvg}>
+                        <use xlinkHref="img/icon/sprite.svg#icon-pause" />
+                    </svg>
+                    :
+                    <svg className={styles.playerBtnPlaySvg}>
+                        <use xlinkHref="img/icon/sprite.svg#icon-play" />
+                    </svg>
+                }
             </div>
             <div className={styles.playerBtnNext}>
                 <svg className={styles.playerBtnNextSvg}>
                     <use xlinkHref="img/icon/sprite.svg#icon-next" />
                 </svg>
             </div>
-            <div className={styles.playerBtnRepeat}>
-                <svg className={styles.playerBtnRepeatSvg}>
+            <div onClick={handleLoop} className={styles.playerBtnRepeat}>
+                <svg className={isLoop ? styles.playerBtnRepeatSvgActive : styles.playerBtnRepeatSvg}>
                     <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
                 </svg>
             </div>
