@@ -27,6 +27,7 @@
     align-items: center;
     justify-content: center;
     margin-right: 17px;
+    cursor: pointer;
 }
 
 .trackTitleSvg {
@@ -46,6 +47,7 @@
     font-size: 16px;
     line-height: 24px;
     color: #ffffff;
+    cursor: pointer;
 }
 
 .trackTitleSpan {
@@ -69,6 +71,7 @@
     line-height: 24px;
     color: #ffffff;
     text-align: left;
+    cursor: pointer;
 }
 
 .trackAlbum {
