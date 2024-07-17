@@ -36,3 +36,7 @@
 .audio{
     display: none;
 }
+
+.box{
+    display: flex;
+}

@@ -7,6 +7,7 @@ import { Volume } from "../Volume/Volume";
 import styles from "./Bar.module.css";
 import { useRef, useState } from "react";
 import ProgressBar from "./ProgressBar/ProgressBar";
+import { CurrentTimeBlock } from "./CurrentTimeBlock/CurrentTimeBlock";
 
 export const Bar = () => {
   const {currentTrack} = useCurrentTrack();
@@ -50,6 +51,7 @@ export const Bar = () => {
   const {name, author, track_file} = currentTrack;
   const duration = audioRef.current?.duration || 0;
   audioRef.current?.addEventListener('ended', () => setIsPlaying(false));
+
   return (
     <div className={styles.bar}>
       <div className={styles.barContent}>
@@ -60,7 +62,10 @@ export const Bar = () => {
             <PlayerControls togglePlay={togglePlay} isPlaying={isPlaying} handleLoop={handleLoop} isLoop={isLoop}/>
             <TrackPlay name={name} author={author}/>
           </div>
-          <Volume audio={audioRef.current}/>
+          <div className={styles.box}>
+            <Volume audio={audioRef.current}/>
+            <CurrentTimeBlock currentTime={currentTime} duration={duration}/>
+          </div>
         </div>
       </div>
     </div>
