@@ -5,19 +5,42 @@ import PlayerControls from "../PlayerControls/PlayerControls";
 import { TrackPlay } from "../TrackPlay/TrackPlay";
 import { Volume } from "../Volume/Volume";
 import styles from "./Bar.module.css";
-
-// 44:52
+import { useRef, useState } from "react";
+import ProgressBar from "./ProgressBar/ProgressBar";
 
 export const Bar = () => {
-  const {currentTrack} = useCurrentTrack()
+  const {currentTrack} = useCurrentTrack();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [currentTime, setCurrentTime] = useState<number>(0)
+
+  const togglePlay = () => {
+    const audio = audioRef.current
+    if (audio) {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      setIsPlaying((prev) => !prev);
+    }
+  }
+
+  const handleSeek = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = Number(event.target.value);
+    }
+  }
   if (!currentTrack) {
     return null
   }
-  const {name, author} = currentTrack
+  const {name, author, track_file} = currentTrack;
+  const duration = audioRef.current?.duration || 0;
   return (
     <div className={styles.bar}>
       <div className={styles.barContent}>
-        <div className={styles.barPlayerProgress} />
+      <audio className={styles.audio} ref={audioRef} controls src={track_file} />
+        <ProgressBar max={duration} value={currentTime} step={0.01} onChange={handleSeek}/>
         <div className={styles.barPlayerBlock}>
           <div className={styles.barPlayer}>
             <PlayerControls/>
