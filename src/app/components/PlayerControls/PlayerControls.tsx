@@ -8,9 +8,12 @@ type PlayerControlsProps = {
 }
 
 export const PlayerControls = ({togglePlay, isPlaying, handleLoop, isLoop}: PlayerControlsProps) => {
+    const giveAlert = ():void => {
+        alert('Ещё не реализовано')
+    }
     return (
      <div className={styles.playerControls}>
-            <div className={styles.playerBtnPrev}>
+            <div onClick={giveAlert} className={styles.playerBtnPrev}>
                 <svg className={styles.playerBtnPrevSvg}>
                     <use xlinkHref="img/icon/sprite.svg#icon-prev" />
                 </svg>
@@ -27,7 +30,7 @@ export const PlayerControls = ({togglePlay, isPlaying, handleLoop, isLoop}: Play
                     </svg>
                 }
             </div>
-            <div className={styles.playerBtnNext}>
+            <div onClick={giveAlert} className={styles.playerBtnNext}>
                 <svg className={styles.playerBtnNextSvg}>
                     <use xlinkHref="img/icon/sprite.svg#icon-next" />
                 </svg>
