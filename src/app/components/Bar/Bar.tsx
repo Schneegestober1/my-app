@@ -5,7 +5,7 @@ import PlayerControls from "../PlayerControls/PlayerControls";
 import { TrackPlay } from "../TrackPlay/TrackPlay";
 import { Volume } from "../Volume/Volume";
 import styles from "./Bar.module.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import { CurrentTimeBlock } from "./CurrentTimeBlock/CurrentTimeBlock";
 
@@ -16,14 +16,24 @@ export const Bar = () => {
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isLoop, setIsLoop] = useState<boolean>(false);
 
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    if (audio) 
+      audio.play()
+
+    setIsPlaying(true)
+  }, [currentTrack])
+
   const togglePlay = () => {
     const audio = audioRef.current;
+
     if (audio) {
-      if (isPlaying) {
+      if (isPlaying)
         audio.pause();
-      } else {
+      else
         audio.play();
-      }
+
       setIsPlaying((prev) => !prev);
     }
   }
