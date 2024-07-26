@@ -18,7 +18,7 @@ export const Bar = () => {
 
   useEffect(() => {
     const audio = audioRef.current;
-
+ 
     if (audio) 
       audio.play()
 

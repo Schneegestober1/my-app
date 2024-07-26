@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import ReduxProvider from "@/store/features/ReduxProvider";
 
 const montserrat = Montserrat({ subsets: ["cyrillic"] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
       <head>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </head>
-      <body className={montserrat.className}>{children}</body>
+      <ReduxProvider>
+        <body className={montserrat.className}>{children}</body>  
+      </ReduxProvider>
     </html>
   );
 }
