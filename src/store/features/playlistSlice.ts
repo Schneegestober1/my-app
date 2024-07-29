@@ -21,3 +21,5 @@ const playlistSlice = createSlice({
 
 export const { setCurrentTrack } = playlistSlice.actions;
 export const playlistReducer = playlistSlice.reducer;
+
+// 32:24 
