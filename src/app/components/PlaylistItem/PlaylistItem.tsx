@@ -22,7 +22,7 @@ export const PlaylistItem = ({track }: TrackProps) => {
       )
     }
 
-    // 53:32
+    // 56:32
 
     return (
         <div onClick={handleTrackClick} className={styles.playlistItem}>
