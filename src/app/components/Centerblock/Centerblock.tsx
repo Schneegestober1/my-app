@@ -5,7 +5,6 @@ import Searchbar from "../Searchbar/Searchbar";
 import styles from "./Centerblock.module.css";
 import { getTracks } from "../../../api/tracks";
 import { TrackType } from "@/types/trackstypes";
-import { useAppDispatch } from "@/hooks";
 
 export async function Centerblock () {
     let tracks: TrackType [] = []
@@ -15,7 +14,6 @@ export async function Centerblock () {
     } catch (err: unknown) {
         error = err instanceof Error ? "Ошибка при загрузке треков " + err.message : "Неизвестная ошибка"
     }
-
     return (
     <div className={styles.mainCenterblock}>
         <Searchbar/>

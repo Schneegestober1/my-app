@@ -4,18 +4,23 @@ import { TrackType } from "@/types/trackstypes";
 import styles from "./PlaylistItem.module.css";
 import { convertSecondsToMinutes } from "@/utils/helpers";
 import { useCurrentTrack } from "@/contexts/CurrentTrackProvider";
+import { useAppDispatch } from "@/hooks";
 
 type TrackProps = {
     track: TrackType
 }
 
-export const PlaylistItem = ({track}: TrackProps) => {
+export const PlaylistItem = ({track }: TrackProps) => {
     const {setCurrentTrack} = useCurrentTrack()
     const {name, author, album, duration_in_seconds} = track;
     const time = convertSecondsToMinutes(duration_in_seconds);
+    
+    const dispatch = useAppDispatch();
 
     const handleTrackClick = () => {
-      setCurrentTrack(track)
+      dispatch(
+        setCurrentTrack({track})
+      )
     }
 
     return (
