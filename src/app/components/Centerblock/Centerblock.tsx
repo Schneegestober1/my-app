@@ -5,7 +5,6 @@ import Searchbar from "../Searchbar/Searchbar";
 import styles from "./Centerblock.module.css";
 import { getTracks } from "../../../api/tracks";
 import { TrackType } from "@/types/trackstypes";
-import { useAppDispatch } from "@/hooks";
 
 export async function Centerblock () {
     let tracks: TrackType [] = []

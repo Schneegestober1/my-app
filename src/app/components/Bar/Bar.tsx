@@ -8,7 +8,6 @@ import styles from "./Bar.module.css";
 import { useEffect, useRef, useState } from "react";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import { CurrentTimeBlock } from "./CurrentTimeBlock/CurrentTimeBlock";
-import { useAppDispatch } from "@/hooks";
 
 export const Bar = () => {
   const {currentTrack} = useCurrentTrack();
@@ -16,7 +15,6 @@ export const Bar = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isLoop, setIsLoop] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const audio = audioRef.current;

@@ -17,7 +17,6 @@ export default function ReduxProvider({ children,}: ReduxProviderType) {
   return <Provider store={storeRef.current}>{children}</Provider>;
 }
 
-
 // Или так
 
 // export default function ReduxProvider({ 

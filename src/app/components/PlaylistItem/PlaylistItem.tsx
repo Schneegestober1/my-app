@@ -4,6 +4,7 @@ import { TrackType } from "@/types/trackstypes";
 import styles from "./PlaylistItem.module.css";
 import { convertSecondsToMinutes } from "@/utils/helpers";
 import { useCurrentTrack } from "@/contexts/CurrentTrackProvider";
+import { useAppDispatch } from "@/hooks";
 
 type TrackProps = {
     track: TrackType
@@ -17,6 +18,8 @@ export const PlaylistItem = ({track}: TrackProps) => {
     const handleTrackClick = () => {
       setCurrentTrack(track)
     }
+
+    const dispatch = useAppDispatch();
 
     return (
         <div onClick={handleTrackClick} className={styles.playlistItem}>
