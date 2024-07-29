@@ -1,6 +1,19 @@
+// 'use client'
+
+import { useEffect, useState } from "react";
 import styles from "./Volume.module.css";
 
-export const Volume = () => {
+type VolumeProps = {
+  audio: HTMLAudioElement | null,
+}
+
+export const Volume = ({audio}: VolumeProps) => {
+  const [volume, setVolume] = useState<number>(0.5);
+
+  useEffect(() => {
+  if (audio) {
+    audio.volume = volume;
+  }},[volume])
   return (
     <div className={styles.barVolumeBlock}>
       <div className={styles.volumeContent}>
@@ -12,8 +25,13 @@ export const Volume = () => {
         <div className={styles.volumeProgress}>
           <input
             className={styles.volumeProgressLine}
-            type="range"
             name="range"
+            type="range"
+            min={0}
+            max={1}
+            step={0.01}
+            value={volume}
+            onChange={(e) => setVolume(Number(e.target.value))}
           />
         </div>
       </div>

@@ -1,17 +1,25 @@
+'use client'
+
 import { TrackType } from "@/types/trackstypes";
 import styles from "./PlaylistItem.module.css";
 import { convertSecondsToMinutes } from "@/utils/helpers";
+import { useCurrentTrack } from "@/contexts/CurrentTrackProvider";
 
 type TrackProps = {
     track: TrackType
 }
 
 export const PlaylistItem = ({track}: TrackProps) => {
+    const {setCurrentTrack} = useCurrentTrack()
     const {name, author, album, duration_in_seconds} = track;
     const time = convertSecondsToMinutes(duration_in_seconds);
 
+    const handleTrackClick = () => {
+      setCurrentTrack(track)
+    }
+
     return (
-        <div className={styles.playlistItem}>
+        <div onClick={handleTrackClick} className={styles.playlistItem}>
             <div className={styles.playlistTrack}>
                 <div className={styles.trackTitle}>
                     <div className={styles.trackTitleImage}>

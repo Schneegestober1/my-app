@@ -29,3 +29,11 @@
 .contentPlaylist::-webkit-scrollbar {
     display: none; /* Chrome, Safari и Opera */
 }
+
+.error {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 72px;
+    letter-spacing: -0.8px;
+}

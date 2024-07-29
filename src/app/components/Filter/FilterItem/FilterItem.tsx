@@ -13,13 +13,13 @@ export function FilterItem({
     title,
     isActive,
     handleFilter,
-    list,
+    list, 
 } : FilterItemProps) {
     const [counter, setCounter] = useState<number>(0);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     return (
         <div className={styles.filterWrapper}>
-            <div onClick={() => {handleFilter(title), setIsOpen(false), setCounter(0)}} className={styles.filterButton}>{title}</div>
+            <div onClick={() => {handleFilter(title), setIsOpen(false), setCounter(0)}} className={isActive ? styles.filterButtonActive : styles.filterButton}>{title}</div>
             {isOpen && (
                 <div className={styles.svgBlock}>
                 <div className={styles.svg}>
@@ -48,7 +48,7 @@ export function FilterItem({
                     ))}
                 </ul>
                 </div>
-                )}
+            )}
         </div>
     )
 }

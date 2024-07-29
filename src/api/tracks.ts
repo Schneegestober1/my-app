@@ -5,5 +5,8 @@ export async function getTracks () {
     if(!res.ok) {
         throw Error(res.statusText)
     }
+    console.log(11111111111111);
     return res.json()
+
 }
+
