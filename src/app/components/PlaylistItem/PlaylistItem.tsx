@@ -11,12 +11,11 @@ type TrackProps = {
 }
 
 export const PlaylistItem = ({track }: TrackProps) => {
+    const dispatch = useAppDispatch();
     const {setCurrentTrack} = useCurrentTrack()
     const {name, author, album, duration_in_seconds} = track;
     const time = convertSecondsToMinutes(duration_in_seconds);
     
-    const dispatch = useAppDispatch();
-
     const handleTrackClick = () => {
       dispatch(
         setCurrentTrack({track})
