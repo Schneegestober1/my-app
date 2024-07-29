@@ -23,6 +23,8 @@ export const PlaylistItem = ({track }: TrackProps) => {
       )
     }
 
+    const dispatch = useAppDispatch();
+
     return (
         <div onClick={handleTrackClick} className={styles.playlistItem}>
             <div className={styles.playlistTrack}>
