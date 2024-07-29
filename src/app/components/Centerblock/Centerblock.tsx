@@ -15,7 +15,7 @@ export async function Centerblock () {
     } catch (err: unknown) {
         error = err instanceof Error ? "Ошибка при загрузке треков " + err.message : "Неизвестная ошибка"
     }
-    const dispatch = useAppDispatch();
+
     return (
     <div className={styles.mainCenterblock}>
         <Searchbar/>
