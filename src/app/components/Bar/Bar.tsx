@@ -1,6 +1,6 @@
 'use client'
 
-import { useCurrentTrack } from "@/contexts/CurrentTrackProvider";
+// import { useCurrentTrack } from "@/contexts/CurrentTrackProvider";
 import PlayerControls from "../PlayerControls/PlayerControls";
 import { TrackPlay } from "../TrackPlay/TrackPlay";
 import { Volume } from "../Volume/Volume";

@@ -26,7 +26,7 @@ export async function Centerblock () {
             <div className={styles.error}>{error}</div> 
             :
             <div className={styles.contentPlaylist}>
-                {tracks.map((track) => <PlaylistItem key={track.id} track={track}/>) }
+                {tracks.map((track) => <PlaylistItem key={track.id} track={track}/>)}
             </div>}
         </div>
     </div>

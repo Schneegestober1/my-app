@@ -7,10 +7,11 @@ import { setCurrentTrack } from "@/store/features/playlistSlice";
 import { useAppDispatch} from "@/hooks";
 
 type TrackProps = {
-    track: TrackType
+    track: TrackType,
+    tracksData: TrackType[],
 }
 
-export const PlaylistItem = ({track }: TrackProps) => {
+export const PlaylistItem = ({track, tracksData }: TrackProps) => {
     const dispatch = useAppDispatch();
     // const {setCurrentTrack} = useCurrentTrack()
     // const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
@@ -18,9 +19,9 @@ export const PlaylistItem = ({track }: TrackProps) => {
     const time = convertSecondsToMinutes(duration_in_seconds);
     
     const handleTrackClick = () => {
-      dispatch(setCurrentTrack(track))
+      dispatch(setCurrentTrack({track, tracksData}))
     }
-    
+
     return (
         <div onClick={handleTrackClick} className={styles.playlistItem}>
             <div className={styles.playlistTrack}>
