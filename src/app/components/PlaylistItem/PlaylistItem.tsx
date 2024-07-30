@@ -4,7 +4,7 @@ import { TrackType } from "@/types/trackstypes";
 import styles from "./PlaylistItem.module.css";
 import { convertSecondsToMinutes } from "@/utils/helpers";
 import { setCurrentTrack } from "@/store/features/playlistSlice";
-import { useAppDispatch} from "@/hooks";
+import { useAppDispatch, useAppSelector} from "@/hooks";
 
 type TrackProps = {
     track: TrackType,
@@ -13,9 +13,9 @@ type TrackProps = {
 
 export const PlaylistItem = ({track, tracksData }: TrackProps) => {
     const dispatch = useAppDispatch();
-    // const {setCurrentTrack} = useCurrentTrack()
-    // const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
-    const {name, author, album, duration_in_seconds} = track;
+    const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
+    const {name, author, album, duration_in_seconds, id} = track;
+    const isPlaying = currentTrack ? currentTrack.id === id : false;
     const time = convertSecondsToMinutes(duration_in_seconds);
     
     const handleTrackClick = () => {

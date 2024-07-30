@@ -11,7 +11,6 @@ import { CurrentTimeBlock } from "./CurrentTimeBlock/CurrentTimeBlock";
 import { useAppSelector } from "@/hooks";
 
 export const Bar = () => {
-  // const {currentTrack} = useCurrentTrack();
   const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
   
   const audioRef = useRef<HTMLAudioElement | null>(null);

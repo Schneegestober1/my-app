@@ -17,7 +17,7 @@ const playlistSlice = createSlice({
   name: "playlist",
   initialState,
   reducers: {
-    setCurrentTrack: (state, action: PayloadAction<{track: TrackType, tracksData: TrackType[ ]}>) => {
+    setCurrentTrack: (state, action: PayloadAction<{track: TrackType, tracksData: TrackType[]}>) => {
       state.currentTrack = action.payload.track;
       state.playlist = action.payload.tracksData;
       state.shuffledPlaylist = [...action.payload.tracksData].sort(() => 0.5 - Math.random());
