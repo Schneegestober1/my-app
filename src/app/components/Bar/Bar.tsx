@@ -8,9 +8,12 @@ import styles from "./Bar.module.css";
 import { useEffect, useRef, useState } from "react";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import { CurrentTimeBlock } from "./CurrentTimeBlock/CurrentTimeBlock";
+import { useAppSelector } from "@/hooks";
 
 export const Bar = () => {
-  const {currentTrack} = useCurrentTrack();
+  // const {currentTrack} = useCurrentTrack();
+  const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
+  
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);

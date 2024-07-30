@@ -20,9 +20,7 @@ export const PlaylistItem = ({track }: TrackProps) => {
     const handleTrackClick = () => {
       dispatch(setCurrentTrack(track))
     }
-
-    // 56:32
-
+    
     return (
         <div onClick={handleTrackClick} className={styles.playlistItem}>
             <div className={styles.playlistTrack}>
