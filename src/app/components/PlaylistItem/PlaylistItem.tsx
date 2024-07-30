@@ -16,6 +16,7 @@ export const PlaylistItem = ({track, tracksData }: TrackProps) => {
     const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
     const {name, author, album, duration_in_seconds, id} = track;
     const isPlaying = currentTrack ? currentTrack.id === id : false;
+    // 1:58:00
     const time = convertSecondsToMinutes(duration_in_seconds);
     
     const handleTrackClick = () => {
