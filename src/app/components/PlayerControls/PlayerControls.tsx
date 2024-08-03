@@ -53,7 +53,7 @@ export const PlayerControls = ({togglePlay, isPlaying, handleLoop, isLoop}: Play
                 </svg>
             </div>
             <div onClick={handleShuffleTrack} className={styles.playerBtnShuffle}>
-                <svg className={styles.playerBtnShuffleSvg}>
+                <svg className={isShuffled ? styles.playerBtnShuffleSvgActive : styles.playerBtnShuffleSvg}>
                     <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
                 </svg>
             </div>
