@@ -1,4 +1,6 @@
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import styles from "./PlayerControls.module.css";
+import { setIsShuffled, setNextTrack, setPrevTrack } from "@/store/features/playlistSlice";
 
 type PlayerControlsProps = {
     togglePlay:() => void;
@@ -8,12 +10,22 @@ type PlayerControlsProps = {
 }
 
 export const PlayerControls = ({togglePlay, isPlaying, handleLoop, isLoop}: PlayerControlsProps) => {
-    const giveAlert = ():void => {
-        alert('Ещё не реализовано')
+    const { isShuffled } = useAppSelector((state) => state.playlist);
+    const dispatch = useAppDispatch();
+
+    const handlePrevTrack = () => {
+        dispatch(setPrevTrack())
     }
+    const handleNextTrack = () => {
+        dispatch(setNextTrack())
+    }
+    const handleShuffleTrack = () => {
+        dispatch(setIsShuffled(!isShuffled))
+    }
+    
     return (
      <div className={styles.playerControls}>
-            <div onClick={giveAlert} className={styles.playerBtnPrev}>
+            <div onClick={handlePrevTrack} className={styles.playerBtnPrev}>
                 <svg className={styles.playerBtnPrevSvg}>
                     <use xlinkHref="img/icon/sprite.svg#icon-prev" />
                 </svg>
@@ -30,7 +42,7 @@ export const PlayerControls = ({togglePlay, isPlaying, handleLoop, isLoop}: Play
                     </svg>
                 }
             </div>
-            <div onClick={giveAlert} className={styles.playerBtnNext}>
+            <div onClick={handleNextTrack} className={styles.playerBtnNext}>
                 <svg className={styles.playerBtnNextSvg}>
                     <use xlinkHref="img/icon/sprite.svg#icon-next" />
                 </svg>
@@ -40,7 +52,7 @@ export const PlayerControls = ({togglePlay, isPlaying, handleLoop, isLoop}: Play
                     <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
                 </svg>
             </div>
-            <div className={styles.playerBtnShuffle}>
+            <div onClick={handleShuffleTrack} className={styles.playerBtnShuffle}>
                 <svg className={styles.playerBtnShuffleSvg}>
                     <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
                 </svg>
