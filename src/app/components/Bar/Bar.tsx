@@ -1,6 +1,5 @@
 'use client'
 
-// import { useCurrentTrack } from "@/contexts/CurrentTrackProvider";
 import PlayerControls from "../PlayerControls/PlayerControls";
 import { TrackPlay } from "../TrackPlay/TrackPlay";
 import { Volume } from "../Volume/Volume";
@@ -8,10 +7,12 @@ import styles from "./Bar.module.css";
 import { useEffect, useRef, useState } from "react";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import { CurrentTimeBlock } from "./CurrentTimeBlock/CurrentTimeBlock";
-import { useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { setNextTrack } from "@/store/features/playlistSlice";
 
 export const Bar = () => {
   const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
+  const dispatch = useAppDispatch();
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -26,6 +27,18 @@ export const Bar = () => {
 
     setIsPlaying(true)
   }, [currentTrack])
+
+  const handleNextTrack = () => {
+    dispatch(setNextTrack())
+  }
+
+  useEffect(() => {
+    audioRef.current?.addEventListener("ended", handleNextTrack);
+
+    return () => {
+      audioRef.current?.removeEventListener("ended", handleNextTrack);
+    };
+  }, [currentTrack]);
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -62,7 +75,6 @@ export const Bar = () => {
   }
   const {name, author, track_file} = currentTrack;
   const duration = audioRef.current?.duration || 0;
-  audioRef.current?.addEventListener('ended', () => setIsPlaying(false));
 
   return (
     <div className={styles.bar}>
