@@ -5,6 +5,7 @@ import styles from "./PlaylistItem.module.css";
 import { convertSecondsToMinutes } from "@/utils/helpers";
 import { setCurrentTrack } from "@/store/features/playlistSlice";
 import { useAppDispatch, useAppSelector} from "@/hooks";
+import classNames from "classnames";
 
 type TrackProps = {
     track: TrackType,
@@ -28,7 +29,7 @@ export const PlaylistItem = ({track, tracksData }: TrackProps) => {
             <div className={styles.playlistTrack}>
                 <div className={styles.trackTitle}>
                     <div className={styles.trackTitleImage}>
-                        <svg className={styles.trackTitleSvg}>
+                        <svg className={isPlaying ? classNames(styles.trackTitleSvg, styles.trackTitleSvgActive) : styles.trackTitleSvg}>
                             <use xlinkHref="img/icon/sprite.svg#icon-note" />
                         </svg>
                     </div>
