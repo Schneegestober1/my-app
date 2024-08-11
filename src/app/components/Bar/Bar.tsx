@@ -4,20 +4,19 @@ import PlayerControls from "../PlayerControls/PlayerControls";
 import { TrackPlay } from "../TrackPlay/TrackPlay";
 import { Volume } from "../Volume/Volume";
 import styles from "./Bar.module.css";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import { CurrentTimeBlock } from "./CurrentTimeBlock/CurrentTimeBlock";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { setIsPlaying, setNextTrack } from "@/store/features/playlistSlice";
 
 export const Bar = () => {
-  const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
-  const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
+  const currentTrack = useAppSelector((state) => state.playlist?.currentTrack);
+  const isPlaying = useAppSelector((state) => state.playlist?.isPlaying || false);
 
   const dispatch = useAppDispatch();
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  // const [isPlaying, setIsPlaying] = useState<boolean>(false);
   // const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isLoop, setIsLoop] = useState<boolean>(false);
@@ -59,16 +58,12 @@ export const Bar = () => {
   const handleLoop = () => {
     const audio = audioRef.current;
     if (audio) {
-      if(isLoop){
-        audio.loop = false;
-      } else {
-        audio.loop = true;
-      }
+      audio.loop = !isLoop;
     }
     setIsLoop((prev) => !prev);
   }
 
-  const handleSeek = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSeek = (event: ChangeEvent<HTMLInputElement>) => {
     if (audioRef.current) {
       audioRef.current.currentTime = Number(event.target.value);
     }
