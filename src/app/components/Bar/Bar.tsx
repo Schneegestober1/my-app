@@ -18,6 +18,7 @@ export const Bar = () => {
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
   // const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  // const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isLoop, setIsLoop] = useState<boolean>(false);
 

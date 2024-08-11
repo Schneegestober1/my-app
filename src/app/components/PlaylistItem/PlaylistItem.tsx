@@ -17,7 +17,6 @@ export const PlaylistItem = ({track, tracksData }: TrackProps) => {
     const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
     const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
 
-
     const {name, author, album, duration_in_seconds, id} = track;
     const isCurrentTrack = currentTrack ? currentTrack.id === id : false;
 
