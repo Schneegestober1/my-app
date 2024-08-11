@@ -3,19 +3,25 @@
 import { TrackType } from "@/types/trackstypes";
 import styles from "./PlaylistItem.module.css";
 import { convertSecondsToMinutes } from "@/utils/helpers";
-import { useCurrentTrack } from "@/contexts/CurrentTrackProvider";
+import { setCurrentTrack } from "@/store/features/playlistSlice";
+import { useAppDispatch, useAppSelector} from "@/hooks";
+import classNames from "classnames";
 
 type TrackProps = {
-    track: TrackType
+    track: TrackType,
+    tracksData: TrackType[],
 }
 
-export const PlaylistItem = ({track}: TrackProps) => {
-    const {setCurrentTrack} = useCurrentTrack()
-    const {name, author, album, duration_in_seconds} = track;
-    const time = convertSecondsToMinutes(duration_in_seconds);
+export const PlaylistItem = ({track, tracksData }: TrackProps) => {
+    const dispatch = useAppDispatch();
+    const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
+    const {name, author, album, duration_in_seconds, id} = track;
+    const isPlaying = currentTrack ? currentTrack.id === id : false;
 
+    const time = convertSecondsToMinutes(duration_in_seconds);
+    
     const handleTrackClick = () => {
-      setCurrentTrack(track)
+      dispatch(setCurrentTrack({track, tracksData}))
     }
 
     return (
@@ -23,7 +29,7 @@ export const PlaylistItem = ({track}: TrackProps) => {
             <div className={styles.playlistTrack}>
                 <div className={styles.trackTitle}>
                     <div className={styles.trackTitleImage}>
-                        <svg className={styles.trackTitleSvg}>
+                        <svg className={isPlaying ? classNames(styles.trackTitleSvg, styles.trackTitleSvgActive) : styles.trackTitleSvg}>
                             <use xlinkHref="img/icon/sprite.svg#icon-note" />
                         </svg>
                     </div>

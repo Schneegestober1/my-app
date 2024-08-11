@@ -14,8 +14,6 @@ export async function Centerblock () {
     } catch (err: unknown) {
         error = err instanceof Error ? "Ошибка при загрузке треков " + err.message : "Неизвестная ошибка"
     }
-    console.log(error);
-
     return (
     <div className={styles.mainCenterblock}>
         <Searchbar/>
@@ -28,7 +26,7 @@ export async function Centerblock () {
             <div className={styles.error}>{error}</div> 
             :
             <div className={styles.contentPlaylist}>
-            {tracks.map((track) => <PlaylistItem key={track.id} track={track}/>) }
+                {tracks.map((track) => <PlaylistItem key={track.id} track={track} tracksData={tracks}/>)}
             </div>}
         </div>
     </div>
