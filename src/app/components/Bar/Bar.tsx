@@ -8,14 +8,16 @@ import { useEffect, useRef, useState } from "react";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import { CurrentTimeBlock } from "./CurrentTimeBlock/CurrentTimeBlock";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { setNextTrack } from "@/store/features/playlistSlice";
+import { setIsPlaying, setNextTrack } from "@/store/features/playlistSlice";
 
 export const Bar = () => {
   const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
+  const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
+
   const dispatch = useAppDispatch();
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  // const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isLoop, setIsLoop] = useState<boolean>(false);
 
@@ -49,7 +51,7 @@ export const Bar = () => {
       else
         audio.play();
 
-      setIsPlaying((prev) => !prev);
+        dispatch(setIsPlaying(!isPlaying));
     }
   }
 

@@ -15,8 +15,11 @@ type TrackProps = {
 export const PlaylistItem = ({track, tracksData }: TrackProps) => {
     const dispatch = useAppDispatch();
     const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
+    const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
+
+
     const {name, author, album, duration_in_seconds, id} = track;
-    const isPlaying = currentTrack ? currentTrack.id === id : false;
+    const isCurrentTrack = currentTrack ? currentTrack.id === id : false;
 
     const time = convertSecondsToMinutes(duration_in_seconds);
     
@@ -29,7 +32,7 @@ export const PlaylistItem = ({track, tracksData }: TrackProps) => {
             <div className={styles.playlistTrack}>
                 <div className={styles.trackTitle}>
                     <div className={styles.trackTitleImage}>
-                        <svg className={isPlaying ? classNames(styles.trackTitleSvg, styles.trackTitleSvgActive) : styles.trackTitleSvg}>
+                        <svg className={classNames(styles.trackTitleSvg, {[styles.trackTitleSvgActive]: isCurrentTrack && isPlaying})}>
                             <use xlinkHref="img/icon/sprite.svg#icon-note" />
                         </svg>
                     </div>
