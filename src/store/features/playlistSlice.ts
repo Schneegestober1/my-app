@@ -1,5 +1,13 @@
+import { fetchFavoriteTracks } from "@/api/tracks";
+import { Tokens } from "@/types/tokens";
 import { TrackType } from "@/types/trackstypes";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+export const getFavoriteTrack = createAsyncThunk("playlist/getFavoriteTracks", async ({ access, refresh }: Tokens) => {
+  const favoriteTracks = fetchFavoriteTracks({ access, refresh });
+  return favoriteTracks;
+}
+);
 
 type PlaylistStateType =  {
   currentTrack: null | TrackType;
@@ -7,6 +15,8 @@ type PlaylistStateType =  {
   shuffledPlaylist: TrackType[];
   isShuffled: boolean;
   isPlaying: boolean;
+  favoritePlaylist: TrackType[];
+  error: string;
 }
 
 const initialState: PlaylistStateType = {
@@ -15,6 +25,8 @@ const initialState: PlaylistStateType = {
   shuffledPlaylist: [],
   isShuffled: false,
   isPlaying: false,
+  favoritePlaylist: [],
+  error: "",
 };
 
 const playlistSlice = createSlice({
@@ -48,6 +60,21 @@ const playlistSlice = createSlice({
     setIsPlaying: (state, action: PayloadAction<boolean>) => {
       state.isPlaying = action.payload;
     },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(
+        getFavoriteTrack.fulfilled,
+        (state, action: PayloadAction<TrackType[]>) => {
+          state.favoritePlaylist = action.payload;
+        }
+      )
+      .addCase(getFavoriteTrack.rejected, (state, action) => {
+        if (action.error.message) {
+          state.error = action.error.message;
+          console.error("Error:", action.error.message);
+        }
+      });
   },
 });
 
