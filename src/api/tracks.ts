@@ -28,6 +28,23 @@ export async function likeTrack({trackId, access, refresh,}: {trackId: number; a
     return response.data;
   }
 
+  export async function dislikeTrack({trackId, access, refresh,}: {trackId: number; access: string; refresh: string;}) {
+    const res = await fetchWithAuth(
+      TRACK_URL + `${trackId}/favorite/`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${access}`,
+        },
+      },
+      refresh
+    );
+  
+    const response = await res.json();
+  
+    return response.data;
+  }
+
   export async function fetchFavoriteTracks({access, refresh,}: {access: string;refresh: string;}) {
     const res = await fetchWithAuth(
       TRACK_URL + `favorite/all/`,

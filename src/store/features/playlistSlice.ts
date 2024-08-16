@@ -60,6 +60,15 @@ const playlistSlice = createSlice({
     setIsPlaying: (state, action: PayloadAction<boolean>) => {
       state.isPlaying = action.payload;
     },
+    setDislikeTrack: (state, action: PayloadAction<TrackType>) => {
+      const index = state.favoritePlaylist.findIndex(
+        (track) => track.id === action.payload.id
+      );
+      state.favoritePlaylist.splice(index, 1);
+    },
+    setLikeTrack: (state, action: PayloadAction<TrackType>) => {
+      state.favoritePlaylist.push(action.payload);
+    },
   },
   extraReducers(builder) {
     builder
@@ -78,6 +87,6 @@ const playlistSlice = createSlice({
   },
 });
 
-export const { setCurrentTrack, setNextTrack, setPrevTrack, setIsShuffled, setIsPlaying } = playlistSlice.actions;
+export const { setCurrentTrack, setNextTrack, setPrevTrack, setIsShuffled, setIsPlaying, setDislikeTrack, setLikeTrack  } = playlistSlice.actions;
 export const playlistReducer = playlistSlice.reducer;
 
