@@ -31,7 +31,7 @@ export const TrackPlay = ({name, author, currentTrack}: TrackPlayProps) => {
         </div>
       </div>
       <div className={styles.trackPlayLikeDis}>
-        <div className={styles.trackPlayLike}>
+        <div className={styles.trackPlayLike} onClick={handleLike}>
           <svg className={styles.trackPlayLikeSvg}>
             <use xlinkHref={isLiked ? "/img/icon/sprite.svg#icon-active-like" : "/img/icon/sprite.svg#icon-like"} />
           </svg>
