@@ -78,15 +78,15 @@ export const Bar = () => {
     <div className={styles.bar}>
       <div className={styles.barContent}>
       <audio className={styles.audio} ref={audioRef} controls src={track_file} onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)} />
-        <ProgressBar max={duration} value={currentTime} step={0.01} onChange={handleSeek}/>
+        <ProgressBar max={duration} value={currentTime} step={0.01} onChange={handleSeek} />
         <div className={styles.barPlayerBlock}>
           <div className={styles.barPlayer}>
-            <PlayerControls togglePlay={togglePlay} isPlaying={isPlaying} handleLoop={handleLoop} isLoop={isLoop}/>
-            <TrackPlay name={name} author={author}/>
+            <PlayerControls togglePlay={togglePlay} isPlaying={isPlaying} handleLoop={handleLoop} isLoop={isLoop} />
+            <TrackPlay name={name} author={author} currentTrack={currentTrack} />
           </div>
           <div className={styles.box}>
-            <Volume audio={audioRef.current}/>
-            <CurrentTimeBlock currentTime={currentTime} duration={duration}/>
+            <Volume audio={audioRef.current} />
+            <CurrentTimeBlock currentTime={currentTime} duration={duration} />
           </div>
         </div>
       </div>

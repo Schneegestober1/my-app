@@ -89,4 +89,3 @@ const playlistSlice = createSlice({
 
 export const { setCurrentTrack, setNextTrack, setPrevTrack, setIsShuffled, setIsPlaying, setDislikeTrack, setLikeTrack  } = playlistSlice.actions;
 export const playlistReducer = playlistSlice.reducer;
-

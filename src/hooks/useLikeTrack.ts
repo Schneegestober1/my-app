@@ -4,9 +4,8 @@ import { setDislikeTrack, setLikeTrack } from "@/store/features/playlistSlice";
 import { TrackType } from "@/types/trackstypes";
 
 const useLikeTrack = (track: TrackType) => {
-    // ТУта надо делать 
   const {tokens} = useAppSelector((state) => state.user)
-  
+
   const trackId = track.id;
   const dispatch = useAppDispatch();
   const likedTracks = useAppSelector((state) => state.playlist.favoritePlaylist);

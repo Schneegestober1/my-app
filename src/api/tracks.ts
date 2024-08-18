@@ -4,11 +4,12 @@ const BASE_URL = "https://webdev-music-003b5b991590.herokuapp.com";
 const TRACK_URL = "https://webdev-music-003b5b991590.herokuapp.com/catalog/track/";
 
 export async function getTracks() {
-  const res = await fetch(TRACK_URL + `all/`);
+  const res = await fetch(`${TRACK_URL}all/`);
+
   if (!res.ok) {
     throw new Error(res.statusText);
   }
-  
+
   const response = await res.json();
 
   return response.data;

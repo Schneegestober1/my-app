@@ -8,7 +8,8 @@ export async function fetchWithAuth(url: string, options: RequestInit, refresh: 
     const newAccessToken = await refreshToken(refresh); // Получение нового Access токена
 
     // Повторный запрос с новым токеном
-    options.headers = {...options.headers,
+    options.headers = {
+      ...options.headers,
       Authorization: `Bearer ${newAccessToken}`,
     };
     res = await fetch(url, options); // Повторный запрос с обновленными заголовками
