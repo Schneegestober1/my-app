@@ -5,7 +5,7 @@ import { TrackType } from "@/types/trackstypes";
 
 const useLikeTrack = (track: TrackType) => {
     // ТУта надо делать 
-  const {tokens} = useAppSelector((state) => state.)
+  const {tokens} = useAppSelector((state) => state.user)
   
   const trackId = track.id;
   const dispatch = useAppDispatch();

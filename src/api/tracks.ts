@@ -3,13 +3,17 @@ import { fetchWithAuth } from "@/utils/fetchWithauth";
 const BASE_URL = "https://webdev-music-003b5b991590.herokuapp.com";
 const TRACK_URL = "https://webdev-music-003b5b991590.herokuapp.com/catalog/track/";
 
-export async function getTracks () {
-    const res = await fetch(TRACK_URL + "all/")
-    if(!res.ok) {
-        throw Error(res.statusText)
-    }
-    return res.json()
+export async function getTracks() {
+  const res = await fetch(TRACK_URL + `all/`);
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
+  
+  const response = await res.json();
+
+  return response.data;
 }
+
 
 export async function likeTrack({trackId, access, refresh,}: {trackId: number; access: string; refresh: string;}) {
     const res = await fetchWithAuth(
