@@ -12,7 +12,11 @@ export async function getTracks() {
 
   const response = await res.json();
 
+  console.log(response.data)
+
   return response.data;
+
+  // return res.json()
 }
 
 

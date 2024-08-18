@@ -40,7 +40,7 @@ const playlistSlice = createSlice({
     },
     setNextTrack: (state) => {
       const playlist = state.isShuffled ? state.shuffledPlaylist : state.playlist;
-      const currentTrackIndex = playlist.findIndex((track) => track.id === state.currentTrack?.id);
+      const currentTrackIndex = playlist.findIndex((track) => track._id === state.currentTrack?._id);
       const newTrack = playlist[currentTrackIndex + 1];
       if(newTrack) {
         state.currentTrack = newTrack;
@@ -48,7 +48,7 @@ const playlistSlice = createSlice({
     },
     setPrevTrack: (state) => {
       const playlist = state.isShuffled ? state.shuffledPlaylist : state.playlist;
-      const currentTrackIndex = playlist.findIndex((track) => track.id === state.currentTrack?.id);
+      const currentTrackIndex = playlist.findIndex((track) => track._id === state.currentTrack?._id);
       const newTrack = playlist[currentTrackIndex - 1];
       if(newTrack) {
         state.currentTrack = newTrack;
@@ -62,7 +62,7 @@ const playlistSlice = createSlice({
     },
     setDislikeTrack: (state, action: PayloadAction<TrackType>) => {
       const index = state.favoritePlaylist.findIndex(
-        (track) => track.id === action.payload.id
+        (track) => track._id === action.payload._id
       );
       state.favoritePlaylist.splice(index, 1);
     },
