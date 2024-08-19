@@ -4,7 +4,7 @@ import { TrackType } from "@/types/trackstypes";
 import styles from "./PlaylistItem.module.css";
 import { convertSecondsToMinutes } from "@/utils/helpers";
 import {setCurrentTrack, setIsPlaying} from "@/store/features/playlistSlice";
-import { useAppDispatch, useAppSelector} from "@/hooks";
+import { useAppDispatch, useAppSelector} from "@/utils/hooks";
 import classNames from "classnames";
 import useLikeTrack from "@/hooks/useLikeTrack";
 

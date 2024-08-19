@@ -1,5 +1,5 @@
 import { dislikeTrack, likeTrack } from "@/api/tracks";
-import { useAppDispatch, useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/utils/hooks";
 import { setDislikeTrack, setLikeTrack } from "@/store/features/playlistSlice";
 import { TrackType } from "@/types/trackstypes";
 
