@@ -9,24 +9,30 @@ export const Menu = () => {
   const { user } = useAppSelector((state) => state.user)
   const router = useRouter()
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout())
+  };
+
+  const handleFavorite = () => {
+    if (user) {
+      router.push("/tracks/favorite")
+    } else {
+      alert("Вы не авторизованы")
+    }
   };
     return(
         <ul className={styles.menuList}>
             <li className={styles.menuItem}>
-              <Link> href="#" className={styles.menuLink}>
-                    Главное
-              </Link>
+                <Link href="/tracks" className={styles.menuLink}>Главное</Link>
             </li>
-            <li className={styles.menuItem}> 
-                <a href="#" className={styles.menuLink}>
-                    Мой плейлист
-                </a>
+            <li onClick={handleFavorite} className={styles.menuItem}> 
+                <Link href="#" className={styles.menuLink}>Мой плейлист</Link>
             </li>
             <li className={styles.menuItem}>
-                <a href="../signin.html" className={styles.menuLink}>
-                    Войти
-                </a>
+                {user 
+                ? 
+                (<a onClick={handleLogout} className={styles.menuLink}>Выйти</a>) 
+                : 
+                (<Link className={styles.menuLink} href="/login">Войти</Link>)}
             </li>
         </ul>
     )

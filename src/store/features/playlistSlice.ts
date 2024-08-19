@@ -17,6 +17,16 @@ type PlaylistStateType =  {
   isPlaying: boolean;
   favoritePlaylist: TrackType[];
   error: string;
+  initialPlaylist: TrackType[];
+  filteredPlaylist: TrackType[];
+  filterOptions: {
+    author: string[],
+    genre: string[],
+    sort: string,
+    searchString: string,
+  };
+  currentPlaylist: TrackType[];
+  initialTracks: TrackType[];
 }
 
 const initialState: PlaylistStateType = {
@@ -27,12 +37,30 @@ const initialState: PlaylistStateType = {
   isPlaying: false,
   favoritePlaylist: [],
   error: "",
+  initialPlaylist: [],
+  filteredPlaylist: [],
+  filterOptions: {
+    author: [],
+    genre: [],
+    sort: "по умолчанию",
+    searchString: "",
+  },
+  currentPlaylist: [],
+  initialTracks: [],
 };
 
 const playlistSlice = createSlice({
   name: "playlist",
   initialState,
   reducers: {
+    setCurrentPlaylist: (state, action: PayloadAction<TrackType[]>) => {
+      state.currentPlaylist = action.payload;
+      state.filteredPlaylist = action.payload;
+      state.initialTracks = action.payload;
+    },
+    setInitialPlaylist: (state, action: PayloadAction<TrackType[]>) => {
+      state.initialPlaylist = action.payload;
+    },
     setCurrentTrack: (state, action: PayloadAction<{track: TrackType, tracksData: TrackType[]}>) => {
       state.currentTrack = action.payload.track;
       state.playlist = action.payload.tracksData;
@@ -87,5 +115,5 @@ const playlistSlice = createSlice({
   },
 });
 
-export const { setCurrentTrack, setNextTrack, setPrevTrack, setIsShuffled, setIsPlaying, setDislikeTrack, setLikeTrack  } = playlistSlice.actions;
+export const { setCurrentTrack, setNextTrack, setPrevTrack, setIsShuffled, setIsPlaying, setDislikeTrack, setLikeTrack, setCurrentPlaylist, setInitialPlaylist  } = playlistSlice.actions;
 export const playlistReducer = playlistSlice.reducer;
