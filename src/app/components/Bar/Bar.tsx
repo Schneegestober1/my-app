@@ -4,15 +4,15 @@ import PlayerControls from "../PlayerControls/PlayerControls";
 import { TrackPlay } from "../TrackPlay/TrackPlay";
 import { Volume } from "../Volume/Volume";
 import styles from "./Bar.module.css";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import { CurrentTimeBlock } from "./CurrentTimeBlock/CurrentTimeBlock";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { setIsPlaying, setNextTrack } from "@/store/features/playlistSlice";
 
 export const Bar = () => {
-  const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
-  const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
+  const currentTrack = useAppSelector((state) => state.playlist?.currentTrack);
+  const isPlaying = useAppSelector((state) => state.playlist?.isPlaying || false);
 
   const dispatch = useAppDispatch();
   
@@ -58,16 +58,12 @@ export const Bar = () => {
   const handleLoop = () => {
     const audio = audioRef.current;
     if (audio) {
-      if(isLoop){
-        audio.loop = false;
-      } else {
-        audio.loop = true;
-      }
+      audio.loop = !isLoop;
     }
     setIsLoop((prev) => !prev);
   }
 
-  const handleSeek = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSeek = (event: ChangeEvent<HTMLInputElement>) => {
     if (audioRef.current) {
       audioRef.current.currentTime = Number(event.target.value);
     }
@@ -82,15 +78,15 @@ export const Bar = () => {
     <div className={styles.bar}>
       <div className={styles.barContent}>
       <audio className={styles.audio} ref={audioRef} controls src={track_file} onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)} />
-        <ProgressBar max={duration} value={currentTime} step={0.01} onChange={handleSeek}/>
+        <ProgressBar max={duration} value={currentTime} step={0.01} onChange={handleSeek} />
         <div className={styles.barPlayerBlock}>
           <div className={styles.barPlayer}>
-            <PlayerControls togglePlay={togglePlay} isPlaying={isPlaying} handleLoop={handleLoop} isLoop={isLoop}/>
-            <TrackPlay name={name} author={author}/>
+            <PlayerControls togglePlay={togglePlay} isPlaying={isPlaying} handleLoop={handleLoop} isLoop={isLoop} />
+            <TrackPlay name={name} author={author} currentTrack={currentTrack} />
           </div>
           <div className={styles.box}>
-            <Volume audio={audioRef.current}/>
-            <CurrentTimeBlock currentTime={currentTime} duration={duration}/>
+            <Volume audio={audioRef.current} />
+            <CurrentTimeBlock currentTime={currentTime} duration={duration} />
           </div>
         </div>
       </div>
