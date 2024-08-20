@@ -5,11 +5,14 @@ import { UserType } from "@/types/uset";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
+
 export const getUser = createAsyncThunk(
   "user/getUser",
   async ({ email, password }: { email: string; password: string }) => {
-    const getUsers = fetchUser({ email, password });
-    return getUsers;
+    const user = await fetchUser({ email, password });
+    // Сделать токены 
+    localStorage.setItem("user", JSON.stringify(user))
+    return user;
   }
 );
 
@@ -36,8 +39,17 @@ type AuthStateType = {
   error: string;
 };
 
+const getUserFromStorage = () => {
+  const user = localStorage.getItem("user")
+  if(user){
+    return JSON.parse(user)
+  } else {
+    return null
+  }
+}
+
 const initialState: AuthStateType = {
-  user: null,
+  user: getUserFromStorage(),
   authState: false,
   tokens: null,
   error: "",

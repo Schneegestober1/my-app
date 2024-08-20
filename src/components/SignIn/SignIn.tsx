@@ -34,7 +34,7 @@ export function Signin() {
         dispatch(getTokens(inputValue)).unwrap(),
         dispatch(getUser(inputValue)).unwrap(),
       ]);
-      router.push("/tracks")
+      router.push("/")
     } catch (error: unknown) {
       console.error("error")
     }
@@ -45,7 +45,7 @@ export function Signin() {
       <div className={styles.containerEnter}>
         <div className={styles.modalBlock}>
           <form action="#" className={styles.modalFormLogin}>
-            <Link href="/tracks">
+            <Link href="/">
               <div className={styles.modalLogo}>
                 <Image alt="logo" src="/img/logo_modal.png" width={140} height={21} />
               </div>
