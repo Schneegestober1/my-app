@@ -10,7 +10,6 @@ export const getUser = createAsyncThunk(
   "user/getUser",
   async ({ email, password }: { email: string; password: string }) => {
     const user = await fetchUser({ email, password });
-    // Сделать токены 
     localStorage.setItem("user", JSON.stringify(user))
     return user;
   }
@@ -27,7 +26,8 @@ export const signup = createAsyncThunk(
 export const getTokens = createAsyncThunk(
   "token/getToken",
   async ({ email, password }: { email: string; password: string }) => {
-    const tokens = fetchToken({ email, password });
+    const tokens = await fetchToken({ email, password });
+    localStorage.setItem("tokens", JSON.stringify(tokens))
     return tokens;
   }
 );

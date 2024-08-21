@@ -22,7 +22,7 @@ export const Menu = () => {
     return(
         <ul className={styles.menuList}>
             <li className={styles.menuItem}>
-                <Link href="/tracks" className={styles.menuLink}>Главное</Link>
+                <Link href="/" className={styles.menuLink}>Главное</Link>
             </li>
             <li onClick={handleFavorite} className={styles.menuItem}> 
                 <Link href="#" className={styles.menuLink}>Мой плейлист</Link>

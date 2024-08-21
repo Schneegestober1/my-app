@@ -56,7 +56,7 @@ export function Signin() {
             <button onClick={handleSignin} className={classNames(styles.modalBtnEnter,styles.modalBtnEnterText)}>
               <span>Войти</span>
             </button>
-            <Link className={styles.modalBtnSignup} href="/signup">Зарегистрироватьс</Link>
+            <Link className={styles.modalBtnSignup} href="/signup">Зарегистрироваться</Link>
           </form>
         </div>
       </div>
