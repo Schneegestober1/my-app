@@ -4,7 +4,7 @@ import { TrackType } from "@/types/trackstypes";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export const getFavoriteTrack = createAsyncThunk("playlist/getFavoriteTracks", async ({ access, refresh }: Tokens) => {
-  const favoriteTracks = fetchFavoriteTracks({ access, refresh });
+  const favoriteTracks = await fetchFavoriteTracks({ access, refresh });
   return favoriteTracks;
 }
 );
@@ -102,7 +102,7 @@ const playlistSlice = createSlice({
     builder
       .addCase(
         getFavoriteTrack.fulfilled,
-        (state, action: PayloadAction<TrackType[]>) => {
+        (state, action) => {
           state.favoritePlaylist = action.payload;
         }
       )

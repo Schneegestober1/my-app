@@ -47,11 +47,19 @@ const getUserFromStorage = () => {
     return null
   }
 }
+const getTokensFromStorage = () => {
+  const tokens = localStorage.getItem("tokens")
+  if(tokens){
+    return JSON.parse(tokens)
+  } else {
+    return null
+  }
+}
 
 const initialState: AuthStateType = {
   user: getUserFromStorage(),
-  authState: false,
-  tokens: null,
+  authState: Boolean (getUserFromStorage()),
+  tokens: getTokensFromStorage(),
   error: "",
 };
 

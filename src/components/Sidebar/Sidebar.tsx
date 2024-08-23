@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./Sidebar.module.css"
 import { useAppDispatch, useAppSelector } from "@/utils/hooks";
 import { logout } from "@/store/features/userSlice";
+import { useInitialLikedTracks } from "@/hooks/useInitialTracks";
 
 export const Sidebar = () => {
     const nameUser = useAppSelector((state) => state.user.user?.username)
@@ -12,6 +13,7 @@ export const Sidebar = () => {
       dispatch(logout())
       localStorage.clear()
     }
+    useInitialLikedTracks()
     return (
         <div className={styles.mainSidebar}>
         {nameUser && 

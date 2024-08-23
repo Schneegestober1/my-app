@@ -24,8 +24,8 @@ export const Menu = () => {
             <li className={styles.menuItem}>
                 <Link href="/" className={styles.menuLink}>Главное</Link>
             </li>
-            <li onClick={handleFavorite} className={styles.menuItem}> 
-                <Link href="#" className={styles.menuLink}>Мой плейлист</Link>
+            <li onClick={handleFavorite} className={styles.menuItem}>
+              <p className={styles.menuLink}>Мой плейлист</p>
             </li>
             <li className={styles.menuItem}>
                 {user 

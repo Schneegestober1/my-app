@@ -63,7 +63,7 @@ export async function likeTrack({trackId, access, refresh,}: {trackId: number; a
     return response.data;
   }
 
-  export async function fetchFavoriteTracks({access, refresh,}: {access: string;refresh: string;}) {
+  export async function fetchFavoriteTracks({access, refresh,}: {access: string; refresh: string;}) {
     const res = await fetchWithAuth(
       TRACK_URL + `favorite/all/`,
       {
