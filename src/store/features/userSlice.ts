@@ -70,6 +70,7 @@ const userSlice = createSlice({
     logout: (state) => {
       state.user = null;
       state.authState = false;
+      localStorage.clear();
     },
     setTokens: (state, action) => {
       state.tokens = action.payload;

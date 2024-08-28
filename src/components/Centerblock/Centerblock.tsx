@@ -1,19 +1,20 @@
+'use client'
+
 import { PlaylistItem } from "@/components/PlaylistItem/PlaylistItem";
 import { Filter } from "../Filter/Filter";
 import PlaylistTitle from "../PlaylistTitle/PlaylistTitle";
 import Searchbar from "../Searchbar/Searchbar";
 import styles from "./Centerblock.module.css";
-import { getTracks } from "@/api/tracks";
-import { TrackType } from "@/types/trackstypes";
 
-export async function Centerblock () {
-    let tracks: TrackType [] = []
-    let error = ''
-    try {
-        tracks = await getTracks()
-    } catch (err: unknown) {
-        error = err instanceof Error ? "Ошибка при загрузке треков " + err.message : "Неизвестная ошибка"
-    }
+export function Centerblock (props: {tracks: }) {
+
+    // let tracks: TrackType[] = []
+    // let error = ''
+    // try {
+    //     tracks = await getTracks()
+    // } catch (err: unknown) {
+    //     error = err instanceof Error ? "Ошибка при загрузке треков " + err.message : "Неизвестная ошибка"
+    // }
     return (
     <div className={styles.mainCenterblock}>
         <Searchbar/>
@@ -21,13 +22,16 @@ export async function Centerblock () {
         <Filter tracks={tracks}/>
         <div className={styles.centerblockContent}>
             <PlaylistTitle/>
-            {error 
+            {/* {error 
             ? 
             <div className={styles.error}>{error}</div> 
             :
             <div className={styles.contentPlaylist}>
                 {tracks.map((track) => <PlaylistItem key={track._id} track={track} tracksData={tracks}/>)}
-            </div>}
+            </div>} */}
+            <div className={styles.contentPlaylist}>
+                {tracks.map((track) => <PlaylistItem key={track._id} track={track} tracksData={tracks}/>)}
+            </div>
         </div>
     </div>
 )}
