@@ -7,7 +7,7 @@ import styles from "./Bar.module.css";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import { CurrentTimeBlock } from "./CurrentTimeBlock/CurrentTimeBlock";
-import { useAppDispatch, useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/utils/hooks";
 import { setIsPlaying, setNextTrack } from "@/store/features/playlistSlice";
 
 export const Bar = () => {
@@ -17,7 +17,6 @@ export const Bar = () => {
   const dispatch = useAppDispatch();
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  // const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isLoop, setIsLoop] = useState<boolean>(false);
 

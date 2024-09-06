@@ -12,9 +12,22 @@ export async function getTracks() {
 
   const response = await res.json();
 
+  console.log(response.data)
+
   return response.data;
+
 }
 
+export async function getCategoryTracks(id: string) {
+  const res = await fetch(BASE_URL + `/catalog/selection/${id}/`);
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
+  
+  const response = await res.json();
+
+  return response.data;
+}
 
 export async function likeTrack({trackId, access, refresh,}: {trackId: number; access: string; refresh: string;}) {
     const res = await fetchWithAuth(
@@ -32,7 +45,7 @@ export async function likeTrack({trackId, access, refresh,}: {trackId: number; a
   
     return response.data;
   }
-
+  
   export async function dislikeTrack({trackId, access, refresh,}: {trackId: number; access: string; refresh: string;}) {
     const res = await fetchWithAuth(
       TRACK_URL + `${trackId}/favorite/`,
@@ -50,7 +63,7 @@ export async function likeTrack({trackId, access, refresh,}: {trackId: number; a
     return response.data;
   }
 
-  export async function fetchFavoriteTracks({access, refresh,}: {access: string;refresh: string;}) {
+  export async function fetchFavoriteTracks({access, refresh,}: {access: string; refresh: string;}) {
     const res = await fetchWithAuth(
       TRACK_URL + `favorite/all/`,
       {

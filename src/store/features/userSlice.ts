@@ -5,11 +5,13 @@ import { UserType } from "@/types/uset";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
+
 export const getUser = createAsyncThunk(
   "user/getUser",
   async ({ email, password }: { email: string; password: string }) => {
-    const getUsers = fetchUser({ email, password });
-    return getUsers;
+    const user = await fetchUser({ email, password });
+    localStorage.setItem("user", JSON.stringify(user))
+    return user;
   }
 );
 
@@ -24,7 +26,8 @@ export const signup = createAsyncThunk(
 export const getTokens = createAsyncThunk(
   "token/getToken",
   async ({ email, password }: { email: string; password: string }) => {
-    const tokens = fetchToken({ email, password });
+    const tokens = await fetchToken({ email, password });
+    localStorage.setItem("tokens", JSON.stringify(tokens))
     return tokens;
   }
 );
@@ -36,10 +39,27 @@ type AuthStateType = {
   error: string;
 };
 
+const getUserFromStorage = () => {
+  const user = localStorage.getItem("user")
+  if(user){
+    return JSON.parse(user)
+  } else {
+    return null
+  }
+}
+const getTokensFromStorage = () => {
+  const tokens = localStorage.getItem("tokens")
+  if(tokens){
+    return JSON.parse(tokens)
+  } else {
+    return null
+  }
+}
+
 const initialState: AuthStateType = {
-  user: null,
-  authState: false,
-  tokens: null,
+  user: getUserFromStorage(),
+  authState: Boolean (getUserFromStorage()),
+  tokens: getTokensFromStorage(),
   error: "",
 };
 
@@ -50,6 +70,7 @@ const userSlice = createSlice({
     logout: (state) => {
       state.user = null;
       state.authState = false;
+      localStorage.clear();
     },
     setTokens: (state, action) => {
       state.tokens = action.payload;

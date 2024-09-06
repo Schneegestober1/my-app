@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/utils/hooks";
 import styles from "./PlayerControls.module.css";
 import { setIsShuffled, setNextTrack, setPrevTrack } from "@/store/features/playlistSlice";
 
